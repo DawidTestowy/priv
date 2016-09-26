@@ -31,7 +31,7 @@ class Activity {
     public function getInfo() {
         foreach($this as $tab) {
             if ($tab == null) {
-                echo "<td bgcolor='red'>brak notatki</td>";
+                echo "<td bgcolor='red'>brak notatki a to nie fajnie</td>";
             } else {
                 echo "<td>$tab</td>";
             }
