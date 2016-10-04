@@ -18,9 +18,9 @@ $company = new Company(1, "Borsukowo Z.O.O");
 $companyTwo = new Company(2, "Kurkowo Z.O.O");
 $companyThree = new Company(3, "Zukowo Z.O.O");
 
-$activity = array(
+$activitys = array(
     new Activity(1,'jajka','2016-09-26',$salesman->getInfo(),$company->getInfo(),ActivityType::PHONE,ActivityStatus::IN_PROGRESS,null),
-    new Activity(2,'koszyki','2016-10-22',$salesmanTwo->getInfo(),$companyTwo->getInfo(),ActivityType::EMAIL,ActivityStatus::CLOSED,'fajny misio'),
+    new Activity(2,'koszyki','2016-10-22',$salesmanTwo->getInfo(),$companyTwo->getInfo(),ActivityType::EMAIL,ActivityStatus::CLOSED,'fajny misio')
 );
 
 ?>
@@ -38,7 +38,13 @@ $activity = array(
     </thead>
     <tbody>
     <tr>
-    <?php $activity->getInfo() ;?>
+    <?php
+
+    foreach($activitys as $tab) {
+        $tab->getInfo();
+    }
+    ?>
+
     </tr>
     </tbody>
 </table>
