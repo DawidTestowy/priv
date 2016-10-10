@@ -37,7 +37,6 @@ $activitys = array(
     <th>NOTATKA</th>
     </thead>
     <tbody>
-    <tr>
     <?php
 
     foreach($activitys as $tab) {
@@ -45,6 +44,5 @@ $activitys = array(
     }
     ?>
 
-    </tr>
     </tbody>
 </table>

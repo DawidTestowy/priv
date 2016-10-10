@@ -29,6 +29,7 @@ class Activity {
     }
 
     public function getInfo() {
+        echo '<tr>';
         foreach($this as $tab) {
             if ($tab == null) {
                 echo "<td bgcolor='red'>brak notatki a to nie fajnie</td>";
@@ -36,6 +37,7 @@ class Activity {
                 echo "<td>$tab</td>";
             }
         }
+        echo '</tr>';
     }
 
 }
