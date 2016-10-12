@@ -18,7 +18,7 @@ class Salesman {
     }
 
     public function getInfo() {
-        return "Salesman: $this->id | $this->name";
+        return  $this->name;
     }
 
 }

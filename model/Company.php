@@ -18,7 +18,7 @@ class Company {
     }
 
     public function getInfo() {
-        return "Company: $this->id | $this->name";
+        return $this->name;
     }
 
 }

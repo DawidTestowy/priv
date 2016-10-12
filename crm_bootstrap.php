@@ -12,7 +12,7 @@ include_once 'model/Salesman.php';
 
 $salesman = new Salesman(1,"Brunon Nosek");
 $salesmanTwo = new Salesman(2,"Zenek Kowalski");
-$salesmanThre = new Salesman(3,"Zdzisław Pakman");
+$salesmanThree = new Salesman(3,"Zdzisław Pakman");
 
 
 $company = new Company(1, "Borsukowo Z.O.O");
@@ -22,7 +22,7 @@ $companyThree = new Company(3, "Zukowo Z.O.O");
 $activitys = array(
     new Activity(1,'jajka','2016-09-26',$salesman->getInfo(),$company->getInfo(),ActivityType::PHONE,ActivityStatus::IN_PROGRESS,null),
     new Activity(2,'koszyki','2016-10-22',$salesmanTwo->getInfo(),$companyTwo->getInfo(),ActivityType::EMAIL,ActivityStatus::CLOSED,'fajny misio'),
-    new Activity(3,'owce','2016-10-09',$salesmanThre->getInfo(),$companyThree->getInfo(),ActivityType::EMAIL,ActivityStatus::CLOSED,null),
+    new Activity(3,'owce','2016-10-09',$salesmanThree->getInfo(),$companyThree->getInfo(),ActivityType::EMAIL,ActivityStatus::CLOSED,null),
     new Activity(4,'makaron','2016-10-12',$salesmanTwo->getInfo(),$companyTwo->getInfo(),ActivityType::MEETING,ActivityStatus::OPEN,'fajny misio')
 );
 
