@@ -40,6 +40,21 @@ class Activity {
         echo '</tr>';
     }
 
+    public function asHtmlTableRow() {
+        $html = "<tr>";
+
+        $html .= "<td>$this->time</td>";
+        $html .= "<td>$this->subject</td>";
+        $html .= "<td>{$this->company->name}</td>";
+        $html .= "<td>$this->type</td>";
+        $html .= "<td>$this->status</td>";
+        $html .= "<td>{$this->salesman->name}</td>";
+
+        $html .="</tr>";
+
+        return $html;
+    }
+
 }
 
 class ActivityType {

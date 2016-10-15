@@ -6,9 +6,10 @@
  * Time: 16:27
  */
 
-include_once 'model/Activity.php';
-include_once 'model/Company.php';
-include_once 'model/Salesman.php';
+function __autoload($classname) {
+    $filename = "model/". $classname .".php";
+    include_once($filename);
+}
 
 $salesman = new Salesman(1,"Brunon Nosek");
 $salesmanTwo = new Salesman(2,"Zenek Kowalski");
@@ -20,32 +21,23 @@ $companyTwo = new Company(2, "Kurkowo Z.O.O");
 $companyThree = new Company(3, "Zukowo Z.O.O");
 
 $activitys = array(
-    new Activity(1,'jajka','2016-09-26',$salesman->getInfo(),$company->getInfo(),ActivityType::PHONE,ActivityStatus::IN_PROGRESS,null),
-    new Activity(2,'koszyki','2016-10-22',$salesmanTwo->getInfo(),$companyTwo->getInfo(),ActivityType::EMAIL,ActivityStatus::CLOSED,'fajny misio'),
-    new Activity(3,'owce','2016-10-09',$salesmanThree->getInfo(),$companyThree->getInfo(),ActivityType::EMAIL,ActivityStatus::CLOSED,null),
-    new Activity(4,'makaron','2016-10-12',$salesmanTwo->getInfo(),$companyTwo->getInfo(),ActivityType::MEETING,ActivityStatus::OPEN,'fajny misio')
+    new Activity(1,'jajka','2016-09-26',$salesman,$company,ActivityType::PHONE,ActivityStatus::IN_PROGRESS,null),
+    new Activity(2,'koszyki','2016-10-22',$salesmanTwo,$companyTwo,ActivityType::EMAIL,ActivityStatus::CLOSED,'fajny misio'),
+    new Activity(3,'owce','2016-10-09',$salesmanThree,$companyThree,ActivityType::EMAIL,ActivityStatus::CLOSED,null),
+    new Activity(4,'makaron','2016-10-12',$salesmanTwo,$companyTwo,ActivityType::MEETING,ActivityStatus::OPEN,'fajny misio')
 );
 
-?>
 
-<table border="1">
-    <thead>
-    <th>ID</th>
-    <th>TEMAT</th>
-    <th>CZAS</th>
-    <th>BISNESMAN</th>
-    <th>FIRMA</th>
-    <th>TYP SPOTKANIA</th>
-    <th>STATUS</th>
-    <th>NOTATKA</th>
-    </thead>
-    <tbody>
-    <?php
+echo '<table border="1"><thead><th>DATA</th><th>TEMAT</th><th>FIRMA</th><th>TYP SPOTKANIA</th><th>STATUS</th><th>BISNESMAN</th></thead><tbody>';
 
-    foreach($activitys as $tab) {
-        $tab->getInfo();
-    }
-    ?>
+foreach ($activitys as $tab) {
+    echo $tab->asHtmlTableRow();
+}
 
-    </tbody>
-</table>
+echo '</tbody></table>';
+
+var_dump($activitys[0]);
+
+$activity = clone $activitys[0];
+
+var_dump($activity);
