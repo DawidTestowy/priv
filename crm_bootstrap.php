@@ -15,6 +15,7 @@ $salesman = new Salesman(1,"Brunon Nosek");
 $salesmanTwo = new Salesman(2,"Zenek Kowalski");
 $salesmanThree = new Salesman(3,"Zdzisław Pakman");
 
+echo $salesman;
 
 $company = new Company(1, "Borsukowo Z.O.O");
 $companyTwo = new Company(2, "Kurkowo Z.O.O");
@@ -36,8 +37,6 @@ foreach ($activitys as $tab) {
 
 echo '</tbody></table>';
 
-var_dump($activitys[0]);
+ $serializeActivity = serialize($activitys[0]);
 
-$activity = clone $activitys[0];
-
-var_dump($activity);
+var_dump(unserialize($serializeActivity));

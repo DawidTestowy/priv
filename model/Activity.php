@@ -55,6 +55,21 @@ class Activity {
         return $html;
     }
 
+    function __clone()
+    {
+        $this->salesman = clone  $this->salesman;
+        $this->company = clone $this->company;
+    }
+
+    function __sleep()
+    {
+        return array('id','subject','time','type','status','note','salesman');
+    }
+
+    function __wakeup()
+    {
+        echo 'POzyskaj zasoby clasy: '. self::class;
+    }
 }
 
 class ActivityType {
