@@ -11,17 +11,18 @@ function __autoload($classname) {
     include_once($filename);
 }
 
+include_once('logic/HtmlHtmlActivityGenerator.php');
+include_once('logic/XmlActivityGenerator.php');
+
 $salesman = new Salesman(1,"Brunon Nosek");
 $salesmanTwo = new Salesman(2,"Zenek Kowalski");
 $salesmanThree = new Salesman(3,"Zdzisław Pakman");
-
-echo $salesman;
 
 $company = new Company(1, "Borsukowo Z.O.O");
 $companyTwo = new Company(2, "Kurkowo Z.O.O");
 $companyThree = new Company(3, "Zukowo Z.O.O");
 
-$activitys = array(
+$activities = array(
     new Activity(1,'jajka','2016-09-26',$salesman,$company,ActivityType::PHONE,ActivityStatus::IN_PROGRESS,null),
     new Activity(2,'koszyki','2016-10-22',$salesmanTwo,$companyTwo,ActivityType::EMAIL,ActivityStatus::CLOSED,'fajny misio'),
     new Activity(3,'owce','2016-10-09',$salesmanThree,$companyThree,ActivityType::EMAIL,ActivityStatus::CLOSED,null),
@@ -29,14 +30,8 @@ $activitys = array(
 );
 
 
-echo '<table border="1"><thead><th>DATA</th><th>TEMAT</th><th>FIRMA</th><th>TYP SPOTKANIA</th><th>STATUS</th><th>BISNESMAN</th></thead><tbody>';
 
-foreach ($activitys as $tab) {
-    echo $tab->asHtmlTableRow();
-}
+$activityGeneratorXML = new XmlHtmlActivityGenerator();
 
-echo '</tbody></table>';
+echo $activityGeneratorXML->generate($activities);
 
- $serializeActivity = serialize($activitys[0]);
-
-var_dump(unserialize($serializeActivity));

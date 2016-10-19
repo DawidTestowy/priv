@@ -13,7 +13,7 @@ class Activity {
     public $salesman;
     public $company;
     public $type;
-    public $status;
+    private $status;
     public $note;
 
     function __construct($id, $subject, $time, $salesman, $company, $type, $status,$note)
@@ -24,21 +24,10 @@ class Activity {
         $this->salesman = $salesman;
         $this->company = $company;
         $this->type = $type;
-        $this->status = $status;
+        $this->status = $this->setStatus($status);
         $this->note = $note;
     }
 
-    public function getInfo() {
-        echo '<tr>';
-        foreach($this as $tab) {
-            if ($tab == null) {
-                echo "<td bgcolor='red'>brak notatki a to nie fajnie</td>";
-            } else {
-                echo "<td>$tab</td>";
-            }
-        }
-        echo '</tr>';
-    }
 
     public function asHtmlTableRow() {
         $html = "<tr>";
@@ -55,6 +44,19 @@ class Activity {
         return $html;
     }
 
+    public function asXml() {
+        $xml = "<activity><id>$this->id</id> ".
+                "<subject>$this->subject</subject> ".
+                "<time>$this->time</time> ".
+                "<salesman>{$this->salesman->name}</salesman> ".
+                "<company>{$this->company->name}</company> ".
+                "<status>$this->status</status> ".
+                "<note>$this->note</note> ".
+                "</activity>";
+
+        return $xml;
+    }
+
     function __clone()
     {
         $this->salesman = clone  $this->salesman;
@@ -68,7 +70,32 @@ class Activity {
 
     function __wakeup()
     {
-        echo 'POzyskaj zasoby clasy: '. self::class;
+        echo 'Pozyskaj zasoby clasy: '. self::class;
+    }
+
+    public function getStatus() {
+        if ($this->status == 1) {
+            return ActivityStatus::OPEN;
+        }
+        if ($this->status == 2) {
+            return ActivityStatus::IN_PROGRESS;
+        }
+        if ($this->status == 3) {
+            return ActivityStatus::CLOSED;
+        }
+
+    }
+
+    public function setStatus($newStatus) {
+        if ($newStatus == ActivityStatus::OPEN) {
+            return 1;
+        }
+        if ($newStatus == ActivityStatus::IN_PROGRESS) {
+            return 2;
+        }
+        if ($newStatus == ActivityStatus::CLOSED) {
+            return 3;
+        }
     }
 }
 
