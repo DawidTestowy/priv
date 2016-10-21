@@ -9,7 +9,7 @@
  */
 
 include_once('ActivityGenerator.php');
-class XmlHtmlActivityGenerator extends ActivityGenerator
+class XmlActivityGenerator extends ActivityGenerator
 {
     private $type = 'xml';
 

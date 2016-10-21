@@ -11,7 +11,7 @@ function __autoload($classname) {
     include_once($filename);
 }
 
-include_once('logic/HtmlHtmlActivityGenerator.php');
+include_once('logic/HtmlActivityGenerator.php');
 include_once('logic/XmlActivityGenerator.php');
 
 $salesman = new Salesman(1,"Brunon Nosek");
@@ -31,7 +31,7 @@ $activities = array(
 
 
 
-$activityGeneratorXML = new XmlHtmlActivityGenerator();
+$activityGeneratorXML = new XmlActivityGenerator();
 
 echo $activityGeneratorXML->generate($activities);
 
