@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<?php include_once('crm_bootstrap.php'); ?>
-<br><hr>
-<?php include_once('exceptions.php'); ?>
+<h1 style="color: red">Wystapił nieoczekiwany błąd w aplikacji</h1>
 </body>
 </html>

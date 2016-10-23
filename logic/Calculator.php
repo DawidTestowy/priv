@@ -12,9 +12,10 @@ class Calculator
 {
     function divide($firstNumber, $secondNumber)
     {
-        if($secondNumber ==0) {
+        if($secondNumber == 0) {
             throw new DivisionException('Debilu, nie dziel przez 0');
         }
         return $firstNumber / $secondNumber;
+
     }
 }

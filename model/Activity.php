@@ -16,13 +16,12 @@ class Activity {
     private $status;
     public $note;
 
-    function __construct($id, $subject, $time, $salesman, $company, $type, $status,$note)
+    function __construct($id, $subject, $time, $salesman, $type, $status,$note)
     {
         $this->id = $id;
         $this->subject = $subject;
         $this->time = $time;
         $this->salesman = $salesman;
-        $this->company = $company;
         $this->type = $type;
         $this->status = $this->setStatus($status);
         $this->note = $note;
@@ -96,6 +95,16 @@ class Activity {
         if ($newStatus == ActivityStatus::CLOSED) {
             return 3;
         }
+    }
+
+    public function setCompany(Company $company)
+    {
+        $this->company = $company;
+    }
+
+    public function getCompany()
+    {
+        return $this->company;
     }
 }
 
